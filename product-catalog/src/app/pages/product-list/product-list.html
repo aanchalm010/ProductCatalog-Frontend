@@ -1,0 +1,56 @@
+<!-- <div *ngIf="loading">Loading...</div>
+<div *ngIf="!loading && products.length === 0">⚠️ No products found.</div>
+
+Add Product button 
+<div class="actions">
+  <button routerLink="/products/new">➕ Add Product</button>
+</div>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of products">
+    <img *ngIf="p.imageUrl" [src]="p.imageUrl" alt="{{p.name}}" />
+    <div class="info">
+      <h3>{{p.name}}</h3>
+      <p>{{p.price | currency}}</p>
+
+      <button routerLink="/products/edit/{{p.id}}">✏️Edit</button>
+      <button (click)="delete(p.id)">🗑️ Delete</button>
+
+      Image Upload
+      <app-image-upload 
+        [productId]="p.id" 
+        (uploaded)="load()">
+      </app-image-upload>
+    </div>
+  </div>
+</div> -->
+
+<header class="page-header">
+  <h1 class="page-title">🛍️ My Product Catalog</h1>
+</header>
+
+<div *ngIf="loading" class="status">Loading...</div>
+<div *ngIf="!loading && products.length === 0" class="status">⚠️ No products found.</div>
+
+<!-- Add Product button -->
+<div class="actions">
+  <button routerLink="/products/new" class="add-btn">➕ Add Product</button>
+</div>
+
+<div class="grid">
+  <div class="card" *ngFor="let p of products">
+    <div class="image-wrapper">
+      <img *ngIf="p.imageUrl" [src]="p.imageUrl" alt="{{ p.name }}" />
+      <div *ngIf="!p.imageUrl" class="placeholder">No Image</div>
+    </div>
+    <div class="info">
+      <h3>{{ p.name }}</h3>
+      <p class="price">{{ p.price | currency }}</p>
+      <div class="actions-inline">
+        <button routerLink="/products/edit/{{ p.id }}">✏️ Edit</button>
+        <button (click)="delete(p.id)">🗑️ Delete</button>
+      </div>
+      <app-image-upload [productId]="p.id" (uploaded)="load()"></app-image-upload>
+    </div>
+  </div>
+</div>

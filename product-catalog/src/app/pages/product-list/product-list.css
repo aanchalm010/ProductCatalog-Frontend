@@ -1,0 +1,139 @@
+/* Status messages */
+.status {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Add button area */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+  margin-bottom: 15px;
+}
+
+.add-btn {
+  padding: 8px 16px;
+  font-weight: 600;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #0d47a1;
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 350px; /* ensures consistent height */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Image area */
+.image-wrapper {
+  width: 100%;
+  height: 180px; /* fixed height for all images */
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Info area */
+.info {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4caf50;
+  margin: 8px 0;
+}
+
+/* Inline buttons */
+.actions-inline {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.actions-inline button {
+  flex: 1;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.actions-inline button:hover {
+  background: #cfd8dc;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #67b6f6, #acc6df);
+  padding: 25px 10px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.page-title {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+

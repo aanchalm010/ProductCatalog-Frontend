@@ -1,0 +1,22 @@
+<!-- <p>product-form works!</p> -->
+ <div class="container">
+  <h2>{{ id ? 'Edit Product' : 'Create Product' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <div>
+      <label>Name</label>
+      <input formControlName="name" />
+       <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">Name is required.</div>
+    </div>
+    <div>
+      <label>Price</label>
+      <input type="number" formControlName="price" />
+      <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched">Price must be > 0.</div>
+    </div>
+    <div style="margin-top:12px;">
+      <button mat-raised-button color="primary" type="submit">{{ id ? 'Update' : 'Create' }}</button>
+      <!-- <button mat-button type="button" (click)="router.navigate(['/'])">Cancel</button> -->
+       <button mat-button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+
