@@ -20,7 +20,7 @@ jobs:
       - name: Show repo structure
         run: ls -R
 
-      # Setup Node
+      # Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -29,11 +29,11 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          Frontend/product-catalog
+          cd Frontend/product-catalog
           npm ci
 
       # Build Angular
       - name: Build Angular
         run: |
-          Frontend/product-catalog
+          cd Frontend/product-catalog
           npx ng build --configuration production
