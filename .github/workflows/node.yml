@@ -29,11 +29,11 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          cd Frontend/product-catalog
+          Frontend/product-catalog
           npm ci
 
       # Build Angular
       - name: Build Angular
         run: |
-          cd Frontend/product-catalog
+          Frontend/product-catalog
           npx ng build --configuration production
