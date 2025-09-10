@@ -12,19 +12,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
+      # Debug repo structure
+      - name: Show repo structure
+        run: ls -R
+
+      # Setup Node
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
+      # Install dependencies
       - name: Install dependencies
-        working-directory: Frontend/product-catalog
-        run: npm ci
+        run: |
+          cd Frontend/product-catalog
+          npm ci
 
-      - name: Build Angular app
-        working-directory: Frontend/product-catalog
-        run: npx ng build --configuration production
-
+      # Build Angular
+      - name: Build Angular
+        run: |
+          cd Frontend/product-catalog
+          npx ng build --configuration production
