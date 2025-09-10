@@ -15,18 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install dependencies
-        run: |
-          cd Frontend/product-catalog
-          npm ci
+        working-directory: Frontend/product-catalog
+        run: npm ci
 
       - name: Build Angular app
-        run: |
-          cd Frontend/product-catalog
-          npx ng build --configuration production
+        working-directory: Frontend/product-catalog
+        run: npx ng build --configuration production
 
