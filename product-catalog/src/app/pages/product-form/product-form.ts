@@ -4,6 +4,10 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-form',
@@ -13,13 +17,17 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,        
+    MatFormFieldModule,   
+    MatInputModule,       
+    MatButtonModule 
   ]
 })
 export class ProductFormComponent implements OnInit {
   form: FormGroup;
   id?: number;
-  formImageUrl?: string | null;   // 👉 store image for edit mode
+  formImageUrl?: string | null;   
 
   constructor(
     private fb: FormBuilder,
@@ -42,7 +50,7 @@ export class ProductFormComponent implements OnInit {
       this.svc.getById(this.id).subscribe({
         next: p => {
           this.form.patchValue({ name: p.name, price: p.price });
-          this.formImageUrl = p.imageUrl;   // 👉 capture existing image
+          this.formImageUrl = p.imageUrl;   
         },
         error: () => this.snack.open('Failed to load product', 'Close', { duration: 3000 })
       });
