@@ -40,4 +40,9 @@ export class ProductService {
     });
     return this.http.request(req);
   }
+// ---------------------------
+  removeImage(id: number) {
+  return this.http.delete(`${this.base}/${id}/image`);
+}
+
 }

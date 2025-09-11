@@ -9,16 +9,17 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   selector: 'app-product-form',
   templateUrl: './product-form.html',
   styleUrls: ['./product-form.css'],
-  standalone: true,   // ✅ standalone component
+  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatSnackBarModule   // ✅ import Angular Material snack bar
+    MatSnackBarModule
   ]
 })
 export class ProductFormComponent implements OnInit {
   form: FormGroup;
   id?: number;
+  formImageUrl?: string | null;   // 👉 store image for edit mode
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +40,10 @@ export class ProductFormComponent implements OnInit {
 
     if (this.id) {
       this.svc.getById(this.id).subscribe({
-        next: p => this.form.patchValue({ name: p.name, price: p.price }),
+        next: p => {
+          this.form.patchValue({ name: p.name, price: p.price });
+          this.formImageUrl = p.imageUrl;   // 👉 capture existing image
+        },
         error: () => this.snack.open('Failed to load product', 'Close', { duration: 3000 })
       });
     }
@@ -72,7 +76,18 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
+  removeImage(): void {
+    if (!this.id) return; // only in edit mode
+    this.svc.removeImage(this.id).subscribe({
+      next: () => {
+        this.formImageUrl = undefined; // remove from UI
+        this.snack.open('Image removed', 'Close', { duration: 2000 });
+      },
+      error: () => this.snack.open('Failed to remove image', 'Close', { duration: 3000 })
+    });
+  }
+
   cancel(): void {
-    this.router.navigate(['/']);  // ✅ clean cancel method
+    this.router.navigate(['/']);
   }
 }
