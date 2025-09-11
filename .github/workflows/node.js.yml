@@ -17,11 +17,11 @@ jobs:
       - name: Show repo structure
         run: ls -R
 
-      # Setup Node
+      # Setup Node.js (must be 20+ for Angular 20)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       # Install dependencies
       - name: Install dependencies
