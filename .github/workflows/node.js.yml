@@ -1,0 +1,36 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Debug repo structure
+      - name: Show repo structure
+        run: ls -R
+
+      # Setup Node.js (must be 20+ for Angular 20)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          cd product-catalog
+          npm ci
+
+      # Build Angular
+      - name: Build Angular
+        run: |
+          cd product-catalog
+          npx ng build --configuration production
