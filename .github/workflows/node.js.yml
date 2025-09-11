@@ -1,36 +1,40 @@
-name: Frontend CI
+name: Angular CI/CD
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - master   # since your repo is on master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      # Debug repo structure
-      - name: Show repo structure
-        run: ls -R
-
-      # Setup Node.js
+      # 2. Setup Node.js (Angular needs Node 18+)
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
 
-      # Install dependencies
+      # 3. Install dependencies
       - name: Install dependencies
         run: |
           cd Frontend/product-catalog
           npm ci
 
-      # Build Angular
+      # 4. Build Angular app (production)
       - name: Build Angular
         run: |
           cd Frontend/product-catalog
-          npx ng build --configuration production
+          npm run build -- --configuration production
+
+      # 5. Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: Frontend/product-catalog/dist/product-catalog   # 👈 adjust if angular.json differs
