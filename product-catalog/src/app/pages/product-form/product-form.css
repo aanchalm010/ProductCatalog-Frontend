@@ -98,3 +98,21 @@ input:focus {
 .btn-danger:hover {
   background: #c62828;
 }
+
+.page-header {
+  background: linear-gradient(135deg, #67b6f6, #acc6df);
+  padding: 25px 10px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.page-title {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}

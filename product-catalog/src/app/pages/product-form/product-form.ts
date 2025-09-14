@@ -59,7 +59,7 @@ export class ProductFormComponent implements OnInit {
 
   save(): void {
     if (this.form.invalid) {
-      this.snack.open('Please fix validation', 'Close', { duration: 2000 });
+      this.snack.open('Invalid', 'Close', { duration: 2000 });
       return;
     }
 

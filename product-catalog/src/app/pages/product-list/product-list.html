@@ -45,7 +45,7 @@ Add Product button
     </div>
     <div class="info">
       <h3>{{ p.name }}</h3>
-      <p class="price">{{ p.price | currency }}</p>
+      <p class="price">{{ p.price | currency:'INR':'symbol' }}</p>
       <div class="actions-inline">
         <button routerLink="/products/edit/{{ p.id }}">✏️ Edit</button>
         <button (click)="delete(p.id)">🗑️ Delete</button>

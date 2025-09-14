@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { CommonModule } from '@angular/common';
 import { HttpEventType } from '@angular/common/http';
 
 @Component({
@@ -9,6 +10,8 @@ import { HttpEventType } from '@angular/common/http';
   //   <div *ngIf="progress>=0">Uploading: {{progress}}%</div>
   // `,
   templateUrl: './image-upload.html',
+  standalone: true, 
+  imports: [CommonModule],
   styleUrls: ['./image-upload.css']
 })
 export class ImageUploadComponent {
