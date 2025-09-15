@@ -32,7 +32,7 @@ jobs:
       # Build Angular
       - name: Build Angular
         run: |
-          cd product-catalog
+          cd Frontend/product-catalog
           npx ng build --configuration production
 
       # Deploy to Azure App Service
@@ -41,4 +41,4 @@ jobs:
         with:
           app-name: "productangular" # 🔹 Replace with your Azure App Service name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ./product-catalog/dist/product-catalog # 🔹 Adjust if dist folder name differs
+          package: ./Frontend/product-catalog/dist/product-catalog # 🔹 Adjust if dist folder name differs
