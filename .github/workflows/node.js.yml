@@ -1,4 +1,4 @@
-name: Frontend CI
+name: Frontend CI/CD
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Show repo structure
         run: ls -R
 
-      # Setup Node.js (must be 20+ for Angular 20)
+      # Setup Node.js (Angular 20 requires Node.js 20+)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,3 +34,11 @@ jobs:
         run: |
           cd product-catalog
           npx ng build --configuration production
+
+      # Deploy to Azure App Service
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "my-angular-app" # 🔹 Replace with your Azure App Service name
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./product-catalog/dist/product-catalog # 🔹 Adjust if dist folder name differs
