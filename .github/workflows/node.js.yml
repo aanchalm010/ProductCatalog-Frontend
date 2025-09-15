@@ -39,6 +39,6 @@ jobs:
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "my-angular-app" # 🔹 Replace with your Azure App Service name
+          app-name: "productangular" # 🔹 Replace with your Azure App Service name
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: ./product-catalog/dist/product-catalog # 🔹 Adjust if dist folder name differs
