@@ -3,10 +3,12 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { Product, CreateProductDto, UpdateProductDto } from '../models/product.model';
+import { prodenvironment } from '../../environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private base = `${environment.apiBaseUrl}/products`;
+  //private base = `${environment.apiBaseUrl}/products`;
+  private base = `${prodenvironment.apiBaseUrl}`;
 
   constructor(private http: HttpClient) {}
 
